@@ -1,6 +1,6 @@
 
 import 'package:dio/dio.dart';
-import 'package:projetopdm/api/hero.dart';
+import 'package:projetopdm/model/hero.dart';
 
 
 

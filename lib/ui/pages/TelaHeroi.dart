@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projetopdm/api/fetchApiHero.dart';
-import 'package:projetopdm/api/hero.dart';
+import 'package:projetopdm/model/hero.dart';
 
 
 class TelaHeroi extends StatelessWidget {
@@ -39,23 +39,50 @@ class ListHero extends  State<HeroListScreen> {
         itemBuilder: (context, index) {
           return 
                 Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10)),
+
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10),),
                   color: Colors.white12,
                   margin: EdgeInsets.all(8),
                   child:
-                      Padding(padding: EdgeInsetsGeometry.all(15),child:
+                      Padding(padding: EdgeInsetsGeometry.symmetric(horizontal: 15),
+                      child:
                       Row(
+
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Image(image: NetworkImage(heroes[index].imageUrl),width: 70,),
-                          Container(margin: EdgeInsetsGeometry.all(20),
-                          child: Row(
+                          Container(margin: EdgeInsetsGeometry.all(15),
+                            child: Image(image: NetworkImage(heroes[index].imageUrl),width: 56,),
+                          ),
+                          Row(
                             children: [
-                              Text("Nome: "+heroes[index].name,style: TextStyle(fontWeight: FontWeight.bold),),
+                              Container(
+                                margin: EdgeInsetsGeometry.all(15),
+                                child:Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(heroes[index].name,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, )),
+                                    Text("Durabilidade: "+heroes[index].intelligence.toString(),style: TextStyle(fontSize: 12), ),
+                                    Text("Velocidade: "+heroes[index].speed.toString(),style: TextStyle(fontSize: 12),),
+
+                                  ],
+                                ),
+                              )
                             ],
-                          ),)
+                          ),
+                          Container(
+                              margin: EdgeInsetsGeometry.all(15) ,
+                              child:
+                              Column(
+                                  children: [
+                              Text(heroes[index].power.toString(),style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, )),
+                              ElevatedButton(onPressed: ()=>{}, child: Text("Ver")),
+                              ],)
+                              )
+
                         ],
+                      ),
                       )
-                 ,)
 
                   ,
                 );
