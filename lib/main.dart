@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart' hide Hero;
-import 'package:projetopdm/pages/batalhar.dart';
-import 'package:projetopdm/pages/cards.dart';
-import 'package:projetopdm/pages/herois.dart';
+import 'package:projetopdm/ui/pages/TelaHeroi.dart';
+import 'package:projetopdm/ui/pages/TelaCards.dart';
+import 'package:projetopdm/ui/pages/TelaBatalhar.dart';
 
-import 'package:projetopdm/pages/minhasCarta.dart';
+import 'package:projetopdm/ui/pages/TelaMinhasCarta.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +27,8 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatelessWidget {
   const Home({super.key});
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,7 +51,7 @@ class Home extends StatelessWidget {
                     child: ElevatedButton(onPressed: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Herois()),
+                        MaterialPageRoute(builder: (context) => TelaHeroi()),
                       );
                     },child: Text("Heróis"),
                     )
@@ -59,7 +61,7 @@ class Home extends StatelessWidget {
                     child: ElevatedButton(onPressed: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Cards()),
+                        MaterialPageRoute(builder: (context) => TelaCards()),
                       );
                     },child: Text("Card Diário"),),
                   ),
@@ -77,7 +79,7 @@ class Home extends StatelessWidget {
                     child: ElevatedButton(onPressed: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Batalhar()),
+                        MaterialPageRoute(builder: (context) => TelaBatalhar()),
                       );
                     },child: Text("Batalhar"),),
                   ),

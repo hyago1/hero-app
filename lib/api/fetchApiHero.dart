@@ -4,7 +4,8 @@ import 'package:projetopdm/api/hero.dart';
 
 
 
-  List<HeroModel> heros = [];
+List<HeroModel> heros = [];
+
 Future<dynamic> fetch() async {
   final dio = Dio();
   final String _baseUrl = 'http://10.0.2.2:3000/hero';
@@ -21,8 +22,6 @@ Future<dynamic> fetch() async {
         heros.add(HeroModel.fromJson(hr));
       }
       return heros;
-      print(heros[1].name);
-
     } else {
       print('Erro ao carregar dados: ${response.statusCode}');
     } }catch (e) {

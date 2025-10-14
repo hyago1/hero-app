@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Herois extends StatelessWidget {
-  const Herois({super.key});
+class TelaBatalhar extends StatelessWidget {
+  const TelaBatalhar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: Text("Herois"),),
+      appBar: AppBar(title: Text("TelaBatalhar"),),
       body:Center(
-        child: Text("Herois"),
+        child: Text("TelaBatalhar"),
       ),
     );
   }

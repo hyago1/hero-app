@@ -3,12 +3,12 @@ import 'package:projetopdm/api/fetchApiHero.dart';
 import 'package:projetopdm/api/hero.dart';
 
 
-class Batalhar extends StatelessWidget {
+class TelaHeroi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: Text("Batalhar"),),
+      appBar: AppBar(title: Text("Herois"),),
       body:Center(
           child:
          HeroListScreen()
@@ -17,22 +17,19 @@ class Batalhar extends StatelessWidget {
   }
 }
 
-
 class ListHero extends  State<HeroListScreen> {
   List<HeroModel> heroes = [];
+
   @override
   void initState() {
     super.initState();
     _loadHeroes();
   }
 
-
-
   Future<void> _loadHeroes() async {
-
     List<HeroModel> fetchedHeroes = await fetch();
     setState(() {
-      heroes = fetchedHeroes; // Atualizando o estado com os heróis carregados
+      heroes = fetchedHeroes; // Aqui atualiza o estado do array inserindo os Herois nele
     });
   }
   @override
@@ -42,22 +39,26 @@ class ListHero extends  State<HeroListScreen> {
         itemBuilder: (context, index) {
           return 
                 Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(3)),
-                  color: Colors.red,
-                  margin: EdgeInsets.all(5),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10)),
+                  color: Colors.white12,
+                  margin: EdgeInsets.all(8),
                   child:
-                  Row(
-                     children: [
+                      Padding(padding: EdgeInsetsGeometry.all(15),child:
+                      Row(
+                        children: [
+                          Image(image: NetworkImage(heroes[index].imageUrl),width: 70,),
+                          Container(margin: EdgeInsetsGeometry.all(20),
+                          child: Row(
+                            children: [
+                              Text("Nome: "+heroes[index].name,style: TextStyle(fontWeight: FontWeight.bold),),
+                            ],
+                          ),)
+                        ],
+                      )
+                 ,)
 
-                       Text("Nome"),
-                       Text(heroes[index].name),
-
-
-                     ],
-                  )
                   ,
                 );
-
         },
       );
 
