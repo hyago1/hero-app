@@ -12,9 +12,6 @@ Future<dynamic> fetch() async {
   final String _baseUrl = 'https://server-json-hero.vercel.app/api/data';
 
   try {
-
-
-
     Response response = await dio.get(_baseUrl);
 
     if (response.statusCode == 200) {
