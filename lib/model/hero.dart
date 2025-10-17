@@ -23,7 +23,7 @@ class HeroModel {
 
   factory HeroModel.fromJson(Map<String, dynamic> json) {
     return HeroModel(
-      id: json['id'],
+      id: json['id'].toString(),
       name: json['name'],
       intelligence: json['powerstats']['intelligence'],
       strength: json['powerstats']['strength'],

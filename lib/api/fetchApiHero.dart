@@ -8,8 +8,13 @@ List<HeroModel> heros = [];
 
 Future<dynamic> fetch() async {
   final dio = Dio();
-  final String _baseUrl = 'http://10.0.2.2:3000/hero';
+  //final String _baseUrl = 'http://10.0.2.2:3000/hero';
+  final String _baseUrl = 'https://server-json-hero.vercel.app/api/data';
+
   try {
+
+
+
     Response response = await dio.get(_baseUrl);
 
     if (response.statusCode == 200) {
@@ -21,12 +26,17 @@ Future<dynamic> fetch() async {
       for (var hr in heroData) {
         heros.add(HeroModel.fromJson(hr));
       }
+      print(heros);
       return heros;
     } else {
       print('Erro ao carregar dados: ${response.statusCode}');
     } }catch (e) {
-    print('Erro ao carregar heróis: ${e}');
+
+      print('DioError: ${e} ');
+
+
   }
+
 }
 
 
