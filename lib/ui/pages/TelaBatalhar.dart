@@ -7,7 +7,6 @@ class TelaBatalhar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: Text("TelaBatalhar"),),
       body:Center(
         child: Text("TelaBatalhar"),
       ),

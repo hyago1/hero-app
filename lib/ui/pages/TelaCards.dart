@@ -8,7 +8,6 @@ class TelaCards extends StatelessWidget {
     return
       Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: Text("Cards"),),
       body:Center(
         child: Text("Cards"),
       ),

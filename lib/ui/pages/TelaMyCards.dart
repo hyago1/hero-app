@@ -7,7 +7,7 @@ class MinhasCartas extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: Text("Minhas Cartas"),),
+
       body:Center(
         child: Text("MinhasCartas"),
       ),
