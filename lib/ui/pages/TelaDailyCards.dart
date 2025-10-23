@@ -23,7 +23,9 @@ class _TelaDailyCardsState extends State<TelaDailyCards> {
   List<HeroModel> heroes = [];
   final now = DateTime.now().day;
   int id = 0;
-  
+  bool load=false;
+
+  bool isLoad = false;
   
   void initState() {
     super.initState();
@@ -31,39 +33,36 @@ class _TelaDailyCardsState extends State<TelaDailyCards> {
   }
 
   Future<void> _loadHeroes() async {
+    await saveData();
     List<HeroModel> fetchedHeroes = await fetch();
-    print(fetchedHeroes);
+    print("Heroes fetched: ${fetchedHeroes.length}");
     setState(() {
-      heroes = fetchedHeroes; // Aqui atualiza o estado do array inserindo os Herois nele
+      heroes = fetchedHeroes;
+      isLoad = true;
     });
-    saveData();
+
   }
-  
   
   int random(){
     var intValue = Random().nextInt(560);
-
     return intValue;
   }
 
   Future<void> saveData() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? data = await readData();
+    String? data = await prefs.getString('data');
+    String? hero = await prefs.getString('idHero');
+    int? idint = hero != null ? int.parse(hero) : null;
+    id = idint ?? 0;
     if(data!=now.toString()){
+      int newId = random();
       await prefs.setString("data" , now.toString());
-      await prefs.setString("idHero" , random().toString());
+      await prefs.setString("idHero" , newId.toString());
+      id = newId;
     }else{
       print("ainda  é dia $now e o hero é id: $id" );
     }
  }
-  Future<String?> readData() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? data = prefs.getString('data');
-    String? hero = prefs.getString('idHero');
-    int idint = int.parse(hero!);
-    id = idint;
-    return data;
-  }
 
 
 
@@ -71,7 +70,7 @@ class _TelaDailyCardsState extends State<TelaDailyCards> {
   @override
   Widget build(BuildContext context) {
 
-    if (id==0) {
+    if (!isLoad) {
       return Center(child: CircularProgressIndicator());
     }
     return Scaffold(
