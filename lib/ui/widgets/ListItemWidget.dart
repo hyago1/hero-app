@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:projetopdm/ui/pages/TelaHeroDetails.dart';
 
 class CardHero extends StatelessWidget {
   final String image;
@@ -8,9 +8,11 @@ class CardHero extends StatelessWidget {
   final String speed;
   final String combat;
   final String power;
+  final String intelligence;
+  final String strength;
 
 
-  const CardHero({super.key, required this.image, required this.durability, required this.speed, required this.combat, required this.power, required this.name});
+  const CardHero({super.key, required this.image, required this.durability, required this.speed, required this.combat, required this.power, required this.name, required this.intelligence, required this.strength, });
 
 
 
@@ -40,13 +42,10 @@ class CardHero extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(name,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, )),
-                        Text("Durabilidade: "+durability,style: TextStyle(fontSize: 12), ),
+                        Text(name,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18,)),
                         Text("Velocidade: "+speed,style: TextStyle(fontSize: 12),),
                         Text("Combate: "+combat,style: TextStyle(fontSize: 12),),
-
-
-                      ],
+                 ],
                     ),
                   )
                 ],
@@ -57,7 +56,19 @@ class CardHero extends StatelessWidget {
                   Column(
                     children: [
                       Text(power,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, )),
-                      ElevatedButton(onPressed: ()=>{}, child: Text("Ver")),
+                      ElevatedButton(onPressed: (()=>
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>
+                                Scaffold(
+                                  backgroundColor: Colors.black,
+                                  appBar: AppBar(title: Text("Detalhes"),backgroundColor: Colors.black12,),
+                                  body:TelaHeroDetails(image:image, durability: durability, speed: speed, combat: combat,name: name,power: power, intelligence: intelligence, strength: strength,)),
+
+                                )
+                            )
+                          //
+                      ), child: Text("Ver")),
                     ],)
               )
 

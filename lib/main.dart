@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart' hide Hero;
 import 'package:projetopdm/ui/pages/TelaHeros.dart';
-import 'package:projetopdm/ui/pages/TelaCards.dart';
+import 'package:projetopdm/ui/pages/TelaDailyCards.dart';
 import 'package:projetopdm/ui/pages/TelaBatalhar.dart';
 
 import 'package:projetopdm/ui/pages/TelaMyCards.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.dark()
       ),
-      home: const Teste2(),
+      home: const Home(),
     );
   }
 }
@@ -28,30 +28,25 @@ class MyApp extends StatelessWidget {
 
 
 
-class Teste2 extends StatefulWidget {
-  const Teste2({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<Teste2> createState() => _Teste2State();
+  State<Home> createState() => _HomeState();
 }
 
-class _Teste2State extends State<Teste2> {
+class _HomeState extends State<Home> {
   int pageIndex = 0 ;
 
   final List<Widget> frames = <Widget>[
     TelaHeros(),
-    TelaCards(),
+    TelaDailyCards(),
+    TelaMyCards(),
     TelaBatalhar(),
-
-    TelaBatalhar(),
-
   ];
 
   @override
   Widget build(BuildContext context) {
-
-
-
 
     return
       Scaffold(
@@ -64,7 +59,9 @@ class _Teste2State extends State<Teste2> {
             child:
             frames.elementAt(pageIndex)
           ),
-        bottomNavigationBar: NavigationBar(destinations: <Widget>[
+          bottomNavigationBar: NavigationBar(
+
+            destinations: <Widget>[
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
@@ -83,9 +80,6 @@ class _Teste2State extends State<Teste2> {
             icon: Icon(Icons.shield_outlined),
             label: 'Batalhar',
           ),
-
-
-
         ],
           selectedIndex: pageIndex,
           onDestinationSelected: (value) {
@@ -99,95 +93,5 @@ class _Teste2State extends State<Teste2> {
 
       )
       ;
-  }
-}
-
-
-
-
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme:ColorScheme.dark()
-      ),
-      home: Scaffold(
-        backgroundColor: Colors.black26,
-        appBar: AppBar(
-          title: Text("Projeto PDM - Hero"),
-        ),
-        
-        bottomNavigationBar: NavigationBar(destinations: <Widget>[
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Badge(child: Icon(Icons.notifications_sharp)),
-            label: 'Notifications',
-
-          ),
-          NavigationDestination(
-            icon: Badge(label: Text('2'), child: Icon(Icons.messenger_sharp)),
-            label: 'Messages',
-          ),
-        ],),
-        
-        
-        
-        body:
-            Center(
-              child:
-              Column(
-                children: [
-                  Container(
-                    margin: EdgeInsets.all(25),
-                    child: ElevatedButton(onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TelaHeros()),
-                      );
-                    },child: Text("Heróis"),
-                    )
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(25),
-                    child: ElevatedButton(onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TelaCards()),
-                      );
-                    },child: Text("Card Diário"),),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(25),
-                    child: ElevatedButton(onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MinhasCartas()),
-                      );
-                    },child: Text("Minhas Cartas"),),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(25),
-                    child: ElevatedButton(onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => TelaBatalhar()),
-                      );
-                    },child: Text("Batalhar"),),
-                  ),
-                ],
-              ),
-            )
-      )
-    );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:projetopdm/api/fetchApiHero.dart';
 import 'package:projetopdm/model/hero.dart';
-import 'package:projetopdm/ui/widgets/CardHero.dart';
+import 'package:projetopdm/ui/widgets/ListItemWidget.dart';
 
 
 class TelaHeros extends StatelessWidget {
@@ -57,7 +57,7 @@ class ListHeros extends  State<HeroListScreen> {
       ListView.builder(
         itemCount: heroes.length,
         itemBuilder: (context, index) {
-          return CardHero(image: heroes[index].imageUrl, durability: heroes[index].durability.toString(), speed: heroes[index].speed.toString(), combat: heroes[index].combat.toString(),name: heroes[index].name.toString(),power: heroes[index].power.toString(),);
+          return CardHero(image: heroes[index].imageUrl, durability: heroes[index].durability.toString(), speed: heroes[index].speed.toString(), combat: heroes[index].combat.toString(),name: heroes[index].name.toString(),power: heroes[index].power.toString(), intelligence:  heroes[index].intelligence.toString(), strength: heroes[index].strength.toString(),);
         },
       )][load];
   }
