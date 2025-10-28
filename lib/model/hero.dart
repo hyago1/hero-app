@@ -22,16 +22,31 @@ class HeroModel {
   });
 
   factory HeroModel.fromJson(Map<String, dynamic> json) {
+    int parseStat(dynamic rawStat) {
+      if (rawStat == null) return 0;
+      if (rawStat is int) return rawStat;
+      return int.tryParse(rawStat.toString()) ?? 0;
+    }
+
+    final String imageUrl =
+        json['images']?['sm'] ??
+        json['image'] ??
+        'https://via.placeholder.com/150';
+
     return HeroModel(
       id: json['id'].toString(),
       name: json['name'],
-      intelligence: json['powerstats']['intelligence'],
-      strength: json['powerstats']['strength'],
-      speed: json['powerstats']['speed'],
-      durability: json['powerstats']['durability'],
-      power: json['powerstats']['power'],
-      combat: json['powerstats']['combat'],
-      imageUrl: json['images']['sm'], // Você pode mudar para 'xs', 'md', ou 'lg'
+      intelligence: parseStat(
+        json['powerstats']?['intelligence'] ?? json['intelligence'],
+      ),
+      strength: parseStat(json['powerstats']?['strength'] ?? json['strength']),
+      speed: parseStat(json['powerstats']?['speed'] ?? json['speed']),
+      durability: parseStat(
+        json['powerstats']?['durability'] ?? json['durability'],
+      ),
+      power: parseStat(json['powerstats']?['power'] ?? json['power']),
+      combat: parseStat(json['powerstats']?['combat'] ?? json['combat']),
+      imageUrl: imageUrl,
     );
   }
 }

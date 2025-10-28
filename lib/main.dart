@@ -1,12 +1,17 @@
-
 import 'package:flutter/material.dart' hide Hero;
+
 import 'package:projetopdm/ui/pages/TelaHeros.dart';
 import 'package:projetopdm/ui/pages/TelaDailyCards.dart';
 import 'package:projetopdm/ui/pages/TelaBatalhar.dart';
-
 import 'package:projetopdm/ui/pages/TelaMyCards.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
@@ -17,16 +22,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-          colorScheme: ColorScheme.dark()
-      ),
+      theme: ThemeData(colorScheme: ColorScheme.dark()),
       home: const Home(),
     );
   }
 }
-
-
-
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -36,7 +36,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int pageIndex = 0 ;
+  int pageIndex = 0;
 
   final List<Widget> frames = <Widget>[
     TelaHeros(),
@@ -47,33 +47,27 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-
-    return
-      Scaffold(
-          backgroundColor: Colors.black26,
-          appBar: AppBar(
-            title: Text("Projeto PDM - Hero"),
-          ),
-          body:
-          Center(
-            child:
-            frames.elementAt(pageIndex)
-          ),
-          bottomNavigationBar: NavigationBar(
-
-            destinations: <Widget>[
+    return Scaffold(
+      backgroundColor: Colors.black26,
+      appBar: AppBar(title: Text("Projeto PDM - Hero")),
+      body: Center(child: frames.elementAt(pageIndex)),
+      bottomNavigationBar: NavigationBar(
+        destinations: <Widget>[
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
             label: 'Heros',
           ),
           NavigationDestination(
-            icon:  Icon(Icons.today),
+            icon: Icon(Icons.today),
             selectedIcon: Icon(Icons.today_sharp),
             label: 'Card Diário',
           ),
           NavigationDestination(
-            icon: Badge(label: Text('2'), child: Icon(Icons.credit_card_rounded)),
+            icon: Badge(
+              label: Text('2'),
+              child: Icon(Icons.credit_card_rounded),
+            ),
             label: 'Meus Cards',
           ),
           NavigationDestination(
@@ -81,17 +75,14 @@ class _HomeState extends State<Home> {
             label: 'Batalhar',
           ),
         ],
-          selectedIndex: pageIndex,
-          onDestinationSelected: (value) {
-            setState(() {
-              pageIndex = value;
-            });
-            print(value);
-          },
-
-        ),
-
-      )
-      ;
+        selectedIndex: pageIndex,
+        onDestinationSelected: (value) {
+          print("enviado");
+          setState(() {
+            pageIndex = value;
+          });
+        },
+      ),
+    );
   }
 }

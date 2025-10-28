@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "736387169757",
+    "project_id": "hero-app-4916f",
+    "storage_bucket": "hero-app-4916f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736387169757:android:2712b537f417b72bbfca34",
+        "android_client_info": {
+          "package_name": "com.example.projetopdm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvm6G6wV9onHp_NufhTfeY_p3tfWwar0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

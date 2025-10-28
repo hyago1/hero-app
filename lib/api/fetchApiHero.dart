@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:projetopdm/model/hero.dart';
 
@@ -8,7 +7,9 @@ Future<dynamic> fetch() async {
   final dio = Dio();
   //final String _baseUrl = 'http://10.0.2.2:3000/hero';
   final String _baseUrl = 'https://server-json-hero.vercel.app/api/data';
-  if(heros.length>0){return heros;} //Retorna o array(heros) caso ele esteja cheio.
+  if (heros.length > 0) {
+    return heros;
+  } //Retorna o array(heros) caso ele esteja cheio.
   try {
     Response response = await dio.get(_baseUrl);
     if (response.statusCode == 200) {
@@ -23,9 +24,7 @@ Future<dynamic> fetch() async {
     } else {
       print('Erro ao carregar dados: ${response.statusCode}');
     }
-  }catch (e) {
-      print('DioError: ${e} ');
+  } catch (e) {
+    print('DioError: ${e} ');
   }
 }
-
-
