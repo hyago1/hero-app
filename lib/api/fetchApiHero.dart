@@ -5,7 +5,6 @@ List<HeroModel> heros = [];
 
 Future<dynamic> fetch() async {
   final dio = Dio();
-  //final String _baseUrl = 'http://10.0.2.2:3000/hero';
   final String _baseUrl = 'https://server-json-hero.vercel.app/api/data';
   if (heros.length > 0) {
     return heros;

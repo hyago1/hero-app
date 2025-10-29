@@ -11,21 +11,27 @@ class TelaHeroDetails extends StatelessWidget {
   final String intelligence;
   final String strength;
 
-
-
-
-  const TelaHeroDetails({super.key, required this.image, required this.name, required this.durability, required this.speed, required this.combat, required this.power, required this.intelligence, required this.strength});
+  const TelaHeroDetails({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.durability,
+    required this.speed,
+    required this.combat,
+    required this.power,
+    required this.intelligence,
+    required this.strength,
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body:
-      Container(
+      body: Container(
         padding: EdgeInsetsDirectional.only(top: 15, start: 20, end: 20),
-        height: 600,
+        height: MediaQuery.of(context).size.height * 0.8,
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(width: 1,color: Colors.white),
+          border: Border.all(width: 1, color: Colors.white),
           image: DecorationImage(
             fit: BoxFit.cover,
             image: NetworkImage(image),
@@ -34,10 +40,9 @@ class TelaHeroDetails extends StatelessWidget {
               BlendMode.dstATop,
             ),
           ),
-         // color: const Color.fromARGB(255, 68, 42, 78),
           color: Colors.black,
         ),
-        margin: EdgeInsets.all(30),
+        margin: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -45,11 +50,7 @@ class TelaHeroDetails extends StatelessWidget {
               //texto
               width: (double.infinity),
               margin: EdgeInsetsDirectional.only(bottom: 10),
-              padding: EdgeInsetsDirectional.only(
-                start: 15,
-                bottom: 4,
-                top: 4,
-              ),
+              padding: EdgeInsetsDirectional.only(start: 15, bottom: 4, top: 4),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.black.withValues(alpha: 0.5),
@@ -69,13 +70,13 @@ class TelaHeroDetails extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
+                    margin: EdgeInsetsDirectional.only(start: 10),
                     child: Image(
                       image: NetworkImage(image),
-                      height: 280,
+                      height: 260,
                       width: 200,
                       fit: BoxFit.cover,
                     ),
-                    margin: EdgeInsetsDirectional.only(start: 10),
                   ),
                   Expanded(
                     child: Container(
@@ -144,6 +145,5 @@ class TelaHeroDetails extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

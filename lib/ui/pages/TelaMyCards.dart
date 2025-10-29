@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:projetopdm/model/hero.dart';
+import 'package:projetopdm/service/AuthService.dart';
+import 'package:projetopdm/service/Service.dart';
 
 import 'package:projetopdm/ui/widgets/ListItemWidget.dart';
 
@@ -28,24 +30,12 @@ class _TelaMyCardsState extends State<TelaMyCards> {
         .collection('users')
         .doc(userId)
         .collection('cards');
-    print("user = $userId");
     final snapshot = await userRef.get();
     final data = snapshot;
 
     for (var element in data.docs) {
-      print(element.data());
       heroes.add(HeroModel.fromJson(element.data()));
     }
-    // if (snapshot) {
-    //   Map<String, dynamic>? data = snapshot
-    //       .data(); // Retorna um Map<String, dynamic>?
-    //   if (data != null) {
-    //     print("Dados do documento: $data");
-    //   }
-    // } else {
-    //   print("Nenhum documento encontrado com o ID .");
-    // }
-
     setState(() {
       load = 1;
     });
@@ -66,19 +56,40 @@ class _TelaMyCardsState extends State<TelaMyCards> {
       ListView.builder(
         itemCount: heroes.length,
         itemBuilder: (context, index) {
-          return ListItemWidget(
-            image: heroes[index].imageUrl,
-            durability: heroes[index].durability.toString(),
-            speed: heroes[index].speed.toString(),
-            combat: heroes[index].combat.toString(),
-            name: heroes[index].name.toString(),
-            power: heroes[index].power.toString(),
-            intelligence: heroes[index].intelligence.toString(),
-            strength: heroes[index].strength.toString(),
+          return GestureDetector(
+            onLongPress: () {
+              showMenu<String>(
+                context: context,
+                color: Colors.deepOrange,
+                position: RelativeRect.fromLTRB(
+                  100,
+                  100,
+                  0,
+                  0,
+                ), // Posição do menu
+                items: [
+                  PopupMenuItem<String>(
+                    child: Text('Excluir'),
+                    onTap: () async {
+                      await Service().deleteCard(heroes[index].name.toString());
+                    },
+                  ),
+                ],
+              );
+            },
+            child: ListItemWidget(
+              image: heroes[index].imageUrl,
+              durability: heroes[index].durability.toString(),
+              speed: heroes[index].speed.toString(),
+              combat: heroes[index].combat.toString(),
+              name: heroes[index].name.toString(),
+              power: heroes[index].power.toString(),
+              intelligence: heroes[index].intelligence.toString(),
+              strength: heroes[index].strength.toString(),
+            ),
           );
         },
       ),
     ][load];
-    ;
   }
 }

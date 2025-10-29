@@ -9,4 +9,27 @@ class Service {
     final userRef = FirebaseFirestore.instance.collection('users').doc(userId);
     await userRef.collection('cards').doc(name).set(carta);
   }
+
+  Future<QuerySnapshot> getCards() async {
+    final user = FirebaseAuth.instance.currentUser; // se tiver autenticação
+    final userId = user?.uid ?? "userId"; // use um ID fixo se não tiver login
+    final userRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('cards');
+    final snapshot = userRef.get();
+
+    return snapshot;
+  }
+
+  Future<void> deleteCard(String name) async {
+    final user = FirebaseAuth.instance.currentUser; // se tiver autenticação
+    final userId = user?.uid ?? "userId"; // use um ID fixo se não tiver login
+    final userRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('cards')
+        .doc(name);
+    userRef.delete();
+  }
 }

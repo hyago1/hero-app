@@ -7,8 +7,9 @@ class infoHeroWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Container(
+    return FractionallySizedBox(
+      widthFactor: 0.95,
+      child: Container(
         margin: EdgeInsets.all(3),
         width: 280,
         decoration: BoxDecoration(
@@ -17,10 +18,7 @@ class infoHeroWidget extends StatelessWidget {
         ),
         padding: EdgeInsets.all(6),
         child: Padding(
-          padding: EdgeInsetsGeometry.directional(
-            start: 10,
-            end: 10,
-          ),
+          padding: EdgeInsetsGeometry.directional(start: 10, end: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -45,7 +43,7 @@ class infoHeroWidget extends StatelessWidget {
             ],
           ),
         ),
-      );
-
+      ),
+    );
   }
 }

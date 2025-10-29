@@ -25,7 +25,7 @@ class _TelaDailyCardsState extends State<TelaDailyCards> {
 
   void initState() {
     super.initState();
-    AuthService().signUpWithEmailAndPassword("hyagophilip@gmail.com", "123456");
+
     _loadHeroes();
   }
 
@@ -95,6 +95,10 @@ class _TelaDailyCardsState extends State<TelaDailyCards> {
                 'combat': heroes[id].combat.toString(),
                 'image': heroes[id].imageUrl,
               }, heroes[id].name);
+
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text("Carta salva!")));
             },
             child: Text('Salvar'),
           ),
