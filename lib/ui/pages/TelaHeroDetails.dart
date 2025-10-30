@@ -28,7 +28,7 @@ class TelaHeroDetails extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Container(
         padding: EdgeInsetsDirectional.only(top: 15, start: 20, end: 20),
-        height: MediaQuery.of(context).size.height * 0.8,
+        height: MediaQuery.of(context).size.height * 0.7,
         width: double.infinity,
         decoration: BoxDecoration(
           border: Border.all(width: 1, color: Colors.white),
@@ -70,12 +70,19 @@ class TelaHeroDetails extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
+                    height: 220,
+                    width: 200,
+                    color: Colors.black12,
                     margin: EdgeInsetsDirectional.only(start: 10),
-                    child: Image(
-                      image: NetworkImage(image),
-                      height: 260,
-                      width: 200,
-                      fit: BoxFit.cover,
+                    child: FractionallySizedBox(
+                      heightFactor: 0.9,
+                      widthFactor: 0.9,
+                      child: Image(
+                        image: NetworkImage(image),
+                        height: double.infinity,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   Expanded(

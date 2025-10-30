@@ -37,7 +37,7 @@ class ListItemWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: EdgeInsetsGeometry.all(15),
+              margin: EdgeInsetsGeometry.all(5),
               child: Image(image: NetworkImage(image), width: 56),
             ),
             Row(

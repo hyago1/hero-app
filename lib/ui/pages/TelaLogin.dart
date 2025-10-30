@@ -41,46 +41,64 @@ class _TelaloginState extends State<Telalogin> {
         MaterialPageRoute(builder: (context) => Home()),
       );
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("Email e/ou Senha incorreto")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Email e/ou Senha incorreto"),
+          duration: Duration(seconds: 1),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login")),
+      backgroundColor: const Color.fromARGB(221, 0, 0, 0),
+      appBar: AppBar(title: Text("Login"), automaticallyImplyLeading: false),
       body: Center(
         child: Container(
           margin: EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Email',
+              Container(
+                margin: EdgeInsets.all(5),
+                child: TextFormField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Email',
+                  ),
                 ),
               ),
-              TextFormField(
-                controller: passwordController,
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Senha',
+              Container(
+                margin: EdgeInsets.all(5),
+                child: TextFormField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Senha',
+                  ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () => {signIn()},
-                child: Text("Entrar"),
-              ),
-              ElevatedButton(
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TelaRegister()),
+
+              Container(
+                margin: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => {signIn()},
+                      child: Text("Entrar"),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => TelaRegister()),
+                      ),
+                      child: Text("Não tenho conta"),
+                    ),
+                  ],
                 ),
-                child: Text("Não tenho conta"),
               ),
             ],
           ),
