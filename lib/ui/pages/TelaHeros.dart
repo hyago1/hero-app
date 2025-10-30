@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:projetopdm/api/fetchApiHero.dart';
 import 'package:projetopdm/model/hero.dart';
 import 'package:projetopdm/ui/widgets/ListItemWidget.dart';

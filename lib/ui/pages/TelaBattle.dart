@@ -1,12 +1,9 @@
-import 'dart:developer';
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projetopdm/model/hero.dart';
 import 'package:projetopdm/ui/pages/TelaHeroDetails.dart';
-import 'package:projetopdm/ui/widgets/ListItemWidget.dart';
 
 class TelaBattle extends StatefulWidget {
   const TelaBattle({super.key});
@@ -38,7 +35,7 @@ class _TelaBattleState extends State<TelaBattle> {
     heroes = snapshot.docs.map((e) => HeroModel.fromJson(e.data())).toList();
     herosAleatorio = List.from(heroes)..shuffle(Random());
 
-    setState(() {}); // 🔹 atualiza a tela quando terminar de carregar
+    setState(() {});
   }
 
   @override

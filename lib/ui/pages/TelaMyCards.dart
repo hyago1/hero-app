@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:projetopdm/model/hero.dart';
-import 'package:projetopdm/service/AuthService.dart';
 import 'package:projetopdm/service/Service.dart';
-
 import 'package:projetopdm/ui/widgets/ListItemWidget.dart';
 
 class TelaMyCards extends StatefulWidget {
@@ -25,7 +22,7 @@ class _TelaMyCardsState extends State<TelaMyCards> {
 
   Future<void> _loadHeroes() async {
     final user = FirebaseAuth.instance.currentUser; // se tiver autenticação
-    final userId = user?.uid ?? "userId"; // use um ID fixo se não tiver login
+    final userId = user?.uid ?? "userId";
     final userRef = FirebaseFirestore.instance
         .collection('users')
         .doc(userId)
@@ -72,6 +69,8 @@ class _TelaMyCardsState extends State<TelaMyCards> {
                     child: Text('Excluir'),
                     onTap: () async {
                       await Service().deleteCard(heroes[index].name.toString());
+                      heroes.clear();
+                      _loadHeroes();
                     },
                   ),
                 ],

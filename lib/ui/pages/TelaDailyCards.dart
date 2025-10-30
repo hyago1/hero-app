@@ -1,9 +1,5 @@
 import 'dart:math';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projetopdm/service/AuthService.dart';
 import 'package:projetopdm/service/Service.dart';
 import 'package:projetopdm/ui/pages/TelaHeroDetails.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -44,6 +40,7 @@ class _TelaDailyCardsState extends State<TelaDailyCards> {
     return intValue;
   }
 
+  // salva a carta do dia com sharedpreference
   Future<void> saveData() async {
     final SharedPreferences shared = await SharedPreferences.getInstance();
     String? data = await shared.getString('data');

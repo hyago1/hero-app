@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:projetopdm/main.dart';
 import 'package:projetopdm/service/AuthService.dart';
-import 'package:projetopdm/ui/pages/TelaHeros.dart';
 import 'package:projetopdm/ui/pages/TelaRegister.dart';
 
 class Telalogin extends StatefulWidget {

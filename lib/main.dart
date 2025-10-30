@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' hide Hero;
 import 'package:projetopdm/service/AuthService.dart';
 import 'package:projetopdm/ui/pages/TelaBattle.dart';
@@ -7,7 +6,7 @@ import 'package:projetopdm/ui/pages/TelaDailyCards.dart';
 import 'package:projetopdm/ui/pages/TelaLogin.dart';
 import 'package:projetopdm/ui/pages/TelaMyCards.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:projetopdm/ui/pages/TelaRegister.dart';
+
 import 'firebase_options.dart';
 
 main() async {
@@ -105,10 +104,7 @@ class _HomeState extends State<Home> {
             label: 'Card Diário',
           ),
           NavigationDestination(
-            icon: Badge(
-              label: Text('2'),
-              child: Icon(Icons.credit_card_rounded),
-            ),
+            icon: Badge(child: Icon(Icons.credit_card_rounded)),
             label: 'Meus Cards',
           ),
           NavigationDestination(
