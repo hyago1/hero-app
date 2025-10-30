@@ -73,6 +73,7 @@ class _TelaloginState extends State<Telalogin> {
               Container(
                 margin: EdgeInsets.all(5),
                 child: TextFormField(
+                  obscureText: true,
                   controller: passwordController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
